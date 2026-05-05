@@ -9,7 +9,6 @@ import {
 
 const { Pool } = pg;
 
-// 🔌 Crear conexión
 export const pool = new Pool({
   user: DB_USER,
   host: DB_HOST,
@@ -21,14 +20,11 @@ export const pool = new Pool({
   },
 });
 
-// 🚀 Inicializar base de datos
-const initDB = async () => {
+// 🚀 Inicializar DB sin romper el server
+(async () => {
   try {
-    // Verificar conexión
-    await pool.connect();
-    console.log("DB conectada ✅");
+    console.log("Conectando a DB...");
 
-    // Crear tabla si no existe
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
@@ -38,9 +34,6 @@ const initDB = async () => {
       );
     `);
 
-    console.log("Tabla users lista ✅");
-
-    // Insertar datos iniciales (sin duplicar)
     await pool.query(`
       INSERT INTO users (name, email)
       VALUES 
@@ -49,12 +42,9 @@ const initDB = async () => {
       ON CONFLICT (email) DO NOTHING;
     `);
 
-    console.log("Datos iniciales insertados ✅");
+    console.log("DB lista ✅");
 
   } catch (error) {
-    console.error("Error inicializando DB:", error);
+    console.error("Error DB:", error);
   }
-};
-
-// Ejecutar al iniciar
-initDB();
+})();
