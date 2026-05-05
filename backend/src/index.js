@@ -1,5 +1,5 @@
 import express from "express";
-import usersRoutes from "./routes/users.routes.js";
+import usersRoutes from "./src/routes/users.routes.js";
 import morgan from "morgan";
 import cors from "cors";
 import { PORT } from "./config.js";
