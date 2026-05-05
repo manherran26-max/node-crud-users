@@ -20,11 +20,9 @@ export const pool = new Pool({
   },
 });
 
-// 🚀 Inicializar DB sin romper el server
+// inicialización sin romper
 (async () => {
   try {
-    console.log("Conectando a DB...");
-
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
@@ -33,18 +31,8 @@ export const pool = new Pool({
         created_at TIMESTAMP NOT NULL DEFAULT NOW()
       );
     `);
-
-    await pool.query(`
-      INSERT INTO users (name, email)
-      VALUES 
-      ('joe', 'joe@ibm.com'),
-      ('ryan', 'ryan@faztweb.com')
-      ON CONFLICT (email) DO NOTHING;
-    `);
-
-    console.log("DB lista ✅");
-
-  } catch (error) {
-    console.error("Error DB:", error);
+    console.log("Tabla lista ✅");
+  } catch (err) {
+    console.error("Error DB:", err);
   }
 })();
