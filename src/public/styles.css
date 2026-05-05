@@ -1,0 +1,70 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Fondo */
+body {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+/* Contenedores */
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #38bdf8;
+}
+
+/* Inputs */
+input {
+  padding: 10px;
+  margin: 5px 5px 10px 0;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  width: 200px;
+}
+
+/* Botones */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #38bdf8;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0ea5e9;
+  transform: scale(1.05);
+}
+
+/* Lista de usuarios */
+ul {
+  margin-top: 10px;
+  list-style: none;
+}
+
+li {
+  background: #1e293b;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  border-left: 5px solid #38bdf8;
+}
