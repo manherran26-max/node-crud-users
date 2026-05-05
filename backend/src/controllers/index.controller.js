@@ -1,8 +1,13 @@
 import { pool } from "../db.js";
 
 export const getUsers = async (req, res) => {
-  const response = await pool.query("SELECT * FROM users ORDER BY id ASC");
-  res.status(200).json(response.rows);
+  try {
+    const result = await pool.query("SELECT * FROM users ORDER BY id ASC");
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error obteniendo usuarios" });
+  }
 };
 
 export const getUserById = async (req, res) => {
