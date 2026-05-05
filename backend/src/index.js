@@ -18,11 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // 👇 SERVIR FRONTEND
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname, "../../frontend")));
 
 // 👇 RUTA PRINCIPAL
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+  res.sendFile(path.join(__dirname, "../../frontend/index.html"));
 });
 
 // 👇 RUTAS API
